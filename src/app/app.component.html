@@ -21,11 +21,11 @@
           <select
           id="subscription"
           class="form-control"
-          [ngModel]="defaultSub"
+          [ngModel]="selectedSubscription"
           name="secret">
-            <option value="basic">Basic</option>
-            <option value="advanced">Advanced</option>
-            <option value="pro">Pro</option>
+            <option
+            *ngFor="let subscription of subscriptions"
+           [value]="subscription">{{subscription}}</option>
           </select>
         </div>
 
@@ -40,6 +40,8 @@
           [(ngModel)]="password"
           name="password"
           required
+          #password
+
          >
         </div>
         <span class="help-block" *ngIf="!password.valid && password.touched">Please enter a valid password</span>
